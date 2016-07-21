@@ -20,7 +20,7 @@ with open(options.filename, 'r') as pipeline_config:
 
     if options.branch in pipeline['pipelines'].keys():
         steps = pipeline['pipelines'][options.branch]
-        print "Starting pipeline for {}".format(options.branch)
+        print "Starting pipeline for %s" % (options.branch)
     else:
         print "Starting pipeline for Default"
         steps = pipeline['pipelines']['default']
@@ -28,7 +28,7 @@ with open(options.filename, 'r') as pipeline_config:
     for step in steps:
         if 'name' in step.keys():
             print "==============================="
-            print "== Step: {}".format(step['name'])
+            print "== Step: %s" % (step['name'])
             print "==============================="
 
         # check if we have a list of steps
