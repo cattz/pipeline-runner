@@ -2,8 +2,23 @@ image: aegon/na
 pipelines:
   default:
     - step:
-      name: Do stuff
-      script: echo "Did stuff"
+      name: List Stuff
+      script: ls
+    - step:
+      name: Echo stuff
+      script:
+        - export FOO="bar"
+        - echo "Did stuff"
+        - echo "Moar stuff"
+
+        - echo "Even moar"
+        - printenv
+    - step:
+      name: Set Stuff
+      script: export FOO="bar"
     - step:
       name: Do moar stuff
       script: echo "Did moar stuff"
+    - step:
+      name: Print Environment
+      script: printenv

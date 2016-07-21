@@ -1,6 +1,7 @@
 import yaml
 import subprocess
 import sys
+import shlex
 from optparse import OptionParser
 
 
@@ -25,11 +26,18 @@ with open(options.filename, 'r') as pipeline_config:
         steps = pipeline['pipelines']['default']
 
     for step in steps:
-        print "==============================="
-        print "== Step: {}".format(step['name'])
-        print "==============================="
+        if 'name' in step.keys():
+            print "==============================="
+            print "== Step: {}".format(step['name'])
+            print "==============================="
 
-        p = subprocess.Popen(step['script'], shell=True, stdout=subprocess.PIPE,
+        # check if we have a list of steps
+        if not isinstance(step['script'], basestring):
+            script = ';'.join(step['script'])
+        else:
+            script = step['script']
+
+        p = subprocess.Popen(script, shell=True, stdout=subprocess.PIPE,
                                   stderr=subprocess.PIPE,
                                   stdin=subprocess.PIPE)
         out, err = p.communicate()
@@ -40,5 +48,7 @@ with open(options.filename, 'r') as pipeline_config:
         if p.returncode != 0:
             sys.exit(p.returncode)
 
-print "Pipeline DONE"
+print "==============================="
+print "======== PIPELINE DONE ========"
+print "==============================="
 sys.exit(0)
