@@ -26,6 +26,7 @@ with open(options.filename, 'r') as pipeline_config:
         steps = pipeline['pipelines']['default']
 
     for step in steps:
+        print step
         if 'name' in step.keys():
             print "==============================="
             print "== Step: %s" % (step['name'])
