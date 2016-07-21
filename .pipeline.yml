@@ -1,0 +1,9 @@
+image: aegon/na
+pipelines:
+  default:
+    - step:
+      name: Do stuff
+      script: echo "Did stuff"
+    - step:
+      name: Do moar stuff
+      script: echo "Did moar stuff"
