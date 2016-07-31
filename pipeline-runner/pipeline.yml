@@ -1,4 +1,4 @@
-image: aegon/na
+image: foobar/na
 pipelines:
   default:
     - step:
