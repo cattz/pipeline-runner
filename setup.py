@@ -14,15 +14,16 @@ except:
 
 setup(
     name = 'pipeline-runner',
-    version = '1.0.1',
+    version = '1.0.2',
     description='Run your Bitbucket Pipeline in the current environment (eg: Bamboo)',
     long_description=README,
     author = 'Sander van de Graaf',
     author_email = 'mail@svdgraaf.nl',
     license = LICENSE,
     url = 'http://github.com/svdgraaf/pipeline-runner/',
-    packages = find_packages(),
-    install_requires=['PyYAML>=3.11']
+    # packages = find_packages(),
+    install_requires=['PyYAML>=3.11'],
+    scripts=['pipeline-runner/pipeline-runner'],
     classifiers=[
         'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',

@@ -6,12 +6,20 @@ from optparse import OptionParser
 
 
 parser = OptionParser()
-parser.add_option("-f", "--file", dest="filename", default='.pipeline.yml',
+parser.add_option("-f", "--file", dest="filename", default='pipeline.yml',
                   help="Parse pipeline from FILE", metavar="FILE")
 parser.add_option("-b", "--branch", dest="branch", default='default',
                   help="Parse pipeline for branch BRANCH", metavar="BRANCH")
 
 (options, args) = parser.parse_args()
+
+# we need a filename to work
+try:
+    with open(options.filename, 'r') as pipeline_config:
+        config = pipeline_config
+except:
+    parser.print_help()
+    sys.exit(1)
 
 with open(options.filename, 'r') as pipeline_config:
     pipeline = yaml.load(pipeline_config)
