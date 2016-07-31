@@ -24,12 +24,12 @@ with open(options.filename, 'r') as pipeline_config:
     else:
         print "Starting pipeline for Default"
         steps = pipeline['pipelines']['default']
-
+    i = 1
     for step in steps:
-        print step
+        # print step
         if 'name' in step.keys():
             print "==============================="
-            print "== Step: %s" % (step['name'])
+            print "== Step %s: %s" % (i, step['name'])
             print "==============================="
 
         # check if we have a list of steps
@@ -48,6 +48,8 @@ with open(options.filename, 'r') as pipeline_config:
             print err
         if p.returncode != 0:
             sys.exit(p.returncode)
+
+        i += 1
 
 print "==============================="
 print "======== PIPELINE DONE ========"
