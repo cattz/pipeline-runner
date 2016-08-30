@@ -14,7 +14,7 @@ except:
 
 setup(
     name = 'pipeline-runner',
-    version = '1.1.4',
+    version = '1.1.5',
     description='Run your Bitbucket Pipeline in the current environment (eg: Bamboo)',
     long_description=README,
     author = 'Sander van de Graaf',

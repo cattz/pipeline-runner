@@ -21,6 +21,7 @@ Options:
   -f FILE, --file=FILE  Parse pipeline from FILE
   -b BRANCH, --branch=BRANCH
                         Parse pipeline for branch BRANCH
+  -v                    Print scripts before running
 ```
 
 Why?
