@@ -10,6 +10,8 @@ parser.add_option("-f", "--file", dest="filename", default='pipeline.yml',
                   help="Parse pipeline from FILE", metavar="FILE")
 parser.add_option("-b", "--branch", dest="branch", default='default',
                   help="Parse pipeline for branch BRANCH", metavar="BRANCH")
+parser.add_option("-v", action="store_true", dest="verbose",
+                  help="Print scripts before running")
 
 (options, args) = parser.parse_args()
 
@@ -45,6 +47,10 @@ with open(options.filename, 'r') as pipeline_config:
             script = ';'.join(step['script'])
         else:
             script = step['script']
+
+        # if we want to run verbose, print the script to be executed
+        if options.verbose:
+            print "Running script:\n", script, "\n"
 
         p = subprocess.Popen(script, shell=True, stdout=subprocess.PIPE,
                                   stderr=subprocess.PIPE,
